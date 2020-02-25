@@ -2,9 +2,9 @@
 ## 简介
 **听诗吧** 是一个集 诗词/诗人推荐、搜索、简介、赏析、朗读（下个版本） 于一体的诗词兴趣 APP。涵盖了从古代到近代的 20,000 位诗人的 500,000 首诗词作品，叙事诗、抒情诗、送别诗、边塞诗、山水田园诗、怀古诗、悼亡诗，咏物诗 应有尽有😁。  
 - APP 端基于 Google 最新研发的 Flutter UI 框架，一套代码库高效构建多平台精美应用（移动、Web、桌面和嵌入式平台）😊，配合 MaterialDesign 的设计风格 和 卡片式布局 让你眼前一亮。更有微信分享功能，好东西当然要分享👍~  
-项目地址: https://github.com/mmtou/listen_poetry_app
+项目地址: https://github.com/mmtou/listen_poetry_app  
 下载体验: 
-![](https://user-gold-cdn.xitu.io/2020/2/25/1707b7cfa41b1c75?w=260&h=260&f=png&s=6603)
+![](https://user-gold-cdn.xitu.io/2020/2/25/1707b7cfa41b1c75?w=260&h=260&f=png&s=6603)  
 https://github.com/mmtou/listen_poetry_app/raw/master/demo/app-release.apk
 
 - API 端基于 SpringBoot 微服务架构 和 轻量级的 MySQL 数据库，给你带来高效、稳定的服务体验。更集成了百度的语音合成技术，让你畅快的享受诗词带来的乐趣😍。
