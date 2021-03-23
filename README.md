@@ -10,6 +10,9 @@ https://github.com/mmtou/listen_poetry_app/raw/master/demo/app-release.apk
 
 - API 端基于 SpringBoot 微服务架构 和 轻量级的 MySQL 数据库，给你带来高效、稳定的服务体验。更集成了百度的语音合成技术，让你畅快的享受诗词带来的乐趣😍。
 
+## 后端源码及数据库脚本
+[https://github.com/mmtou/listenpoetry-api](https://github.com/mmtou/listenpoetry-api)
+
 
 ## 先睹为快
 ![](https://user-gold-cdn.xitu.io/2020/2/25/1707b40f3cdd72bd?w=704&h=1396&f=png&s=232993)
