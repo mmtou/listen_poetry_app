@@ -4,13 +4,13 @@ import 'package:dio/dio.dart';
 import './constant.dart';
 
 class Http {
-  Dio _dio;
+  Dio? _dio;
 
   // 工厂模式
   factory Http() => _getInstance();
 
   static Http get instance => _getInstance();
-  static Http _instance;
+  static Http? _instance;
 
   Http._internal() {
     // 初始化
@@ -18,61 +18,87 @@ class Http {
     if (_dio == null) {
       _dio = Dio(
         BaseOptions(
-            baseUrl: Constant.host,
-            connectTimeout: 10000,
-            receiveTimeout: 6000,
-            headers: {'Content-Type': 'application/json'}),
+          baseUrl: Constant.host,
+          connectTimeout: 60000,
+          receiveTimeout: 60000,
+          headers: {
+            'Content-Type': 'application/json',
+            'User-Agent-Ext': 'appName=watermarkapp'
+          },
+        ),
       );
 
-      _dio.interceptors
-          .add(InterceptorsWrapper(onRequest: (RequestOptions options) async {
+      _dio!.interceptors.add(InterceptorsWrapper(onRequest:
+          (RequestOptions options, RequestInterceptorHandler handler) {
         BotToast.showLoading();
-        return options; //continue
-      }, onResponse: (Response response) async {
-        BotToast.closeAllLoading();
+        return handler.next(options);
+      }, onResponse: (Response response, ResponseInterceptorHandler handler) {
         var data = response.data;
-        if (!data['success']) {
-          BotToast.showText(text: data['message']);
-          throw (data['message']);
+        if (data['code'] != null && data['code'] != '200') {
+          BotToast.closeAllLoading();
+          handler.reject(DioError(
+              requestOptions: RequestOptions(path: ''), error: data['msg']));
+          // throw (data['msg']);
+        } else {
+          return handler.next(response);
         }
-        return response.data['result']; // continue
-      }, onError: (DioError e) async {
+      }, onError: (DioError e, ErrorInterceptorHandler handler) {
+        // 301 400
+        String msg = '内部错误 请稍后重试';
+        var response = e.response;
+        if (response != null) {
+          msg = response.data['msg'] ?? msg;
+        }
         BotToast.closeAllLoading();
         if ('DioErrorType.DEFAULT' == e.type.toString()) {
           BotToast.showText(text: e.error);
         } else {
-          BotToast.showText(text: '服务器异常');
+          BotToast.showText(text: msg);
         }
-        // Do something with response error
-        return e; //continue
+        return handler.next(e);
       }));
     }
   }
 
   static Http _getInstance() {
-    if (_instance == null) {
-      _instance = Http._internal();
-    }
-    return _instance;
+    _instance ??= Http._internal();
+    return _instance!;
   }
 
-  Future get(uri, {queryParameters}) async {
+  Future get(uri, {queryParameters, options}) async {
     try {
-      Response response = await _dio.get(uri, queryParameters: queryParameters);
-      print(response);
+      Map<String, dynamic> data = {...queryParameters ?? {}};
+      Response response =
+          await _dio!.get(uri, queryParameters: data, options: options);
       return response.data;
     } catch (e) {
-      print(e);
+      print('error: $e');
+      throw e;
     }
   }
 
-  Future post(uri, {json}) async {
+  Future post(uri, {Map? json}) async {
     try {
-      Response response = await _dio.post(uri, data: json);
-      print(response);
+      var data = {...json ?? {}};
+      Response response = await _dio!.post(
+          uri + '?t=${DateTime.now().millisecondsSinceEpoch}',
+          data: data);
       return response.data;
     } catch (e) {
-      print(e);
+      print('error: $e');
+      throw e;
+    }
+  }
+
+  Future postFormData(uri, FormData form) async {
+    try {
+      Response response = await _dio!.post(
+          uri + '?t=${DateTime.now().millisecondsSinceEpoch}',
+          data: form);
+      return response.data;
+    } catch (e) {
+      print('error: $e');
+      throw e;
     }
   }
 }

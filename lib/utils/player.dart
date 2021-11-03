@@ -2,13 +2,13 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:bot_toast/bot_toast.dart';
 
 class Player {
-  AudioPlayer player;
+  AudioPlayer? player;
 
   // 工厂模式
   factory Player() => _getInstance();
 
   static Player get instance => _getInstance();
-  static Player _instance;
+  static Player? _instance;
 
   Player._internal() {
     // 初始化
@@ -21,7 +21,7 @@ class Player {
     if (_instance == null) {
       _instance = Player._internal();
     }
-    return _instance;
+    return _instance!;
   }
 
   listen(
@@ -31,29 +31,29 @@ class Player {
       onPlayerCompletion,
       onPlayerError}) {
     if (onDurationChanged != null) {
-      player.onAudioPositionChanged
+      player!.onAudioPositionChanged
           .listen((Duration p) => onDurationChanged(p));
     }
     if (onAudioPositionChanged != null) {
-      player.onAudioPositionChanged
+      player!.onAudioPositionChanged
           .listen((Duration p) => onAudioPositionChanged(p));
     }
     if (onPlayerStateChanged != null) {
-      player.onPlayerStateChanged
-          .listen((AudioPlayerState s) => onPlayerStateChanged(s));
+      player!.onPlayerStateChanged
+          .listen((PlayerState s) => onPlayerStateChanged(s));
     }
     if (onPlayerCompletion != null) {
-      player.onPlayerCompletion.listen((event) => onPlayerCompletion(event));
+      player!.onPlayerCompletion.listen((event) => onPlayerCompletion(event));
     }
     if (onPlayerError != null) {
-      player.onPlayerError.listen((msg) => onPlayerError(msg));
+      player!.onPlayerError.listen((msg) => onPlayerError(msg));
     }
   }
 
   // 第一次播放
   play(String url) async {
     await this.release();
-    int result = await player.play(url);
+    int result = await player!.play(url);
     if (result == 1) {
       // success
     } else {
@@ -63,7 +63,7 @@ class Player {
 
   // 暂停
   pause() async {
-    int result = await player.pause();
+    int result = await player!.pause();
     if (result == 1) {
       // success
     } else {
@@ -73,7 +73,7 @@ class Player {
 
   // 继续播放
   resume() async {
-    int result = await player.resume();
+    int result = await player!.resume();
     if (result == 1) {
       // success
     } else {
@@ -83,7 +83,7 @@ class Player {
 
   // reset
   stop() async {
-    int result = await player.stop();
+    int result = await player!.stop();
     if (result == 1) {
       // success
     } else {
@@ -93,7 +93,7 @@ class Player {
 
   // 释放
   release() async {
-    int result = await player.release();
+    int result = await player!.release();
     if (result == 1) {
       // success
     } else {

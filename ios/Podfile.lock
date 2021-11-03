@@ -4,14 +4,12 @@ PODS:
   - Flutter (1.0.0)
   - fluwx (0.0.1):
     - Flutter
+    - WechatOpenSDK_Fuck (~> 1.9.2)
   - path_provider (0.0.1):
     - Flutter
   - shared_preferences (0.0.1):
     - Flutter
-  - shared_preferences_macos (0.0.1):
-    - Flutter
-  - shared_preferences_web (0.0.1):
-    - Flutter
+  - WechatOpenSDK_Fuck (1.9.2)
 
 DEPENDENCIES:
   - audioplayers (from `.symlinks/plugins/audioplayers/ios`)
@@ -19,8 +17,10 @@ DEPENDENCIES:
   - fluwx (from `.symlinks/plugins/fluwx/ios`)
   - path_provider (from `.symlinks/plugins/path_provider/ios`)
   - shared_preferences (from `.symlinks/plugins/shared_preferences/ios`)
-  - shared_preferences_macos (from `.symlinks/plugins/shared_preferences_macos/ios`)
-  - shared_preferences_web (from `.symlinks/plugins/shared_preferences_web/ios`)
+
+SPEC REPOS:
+  trunk:
+    - WechatOpenSDK_Fuck
 
 EXTERNAL SOURCES:
   audioplayers:
@@ -33,20 +33,15 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/path_provider/ios"
   shared_preferences:
     :path: ".symlinks/plugins/shared_preferences/ios"
-  shared_preferences_macos:
-    :path: ".symlinks/plugins/shared_preferences_macos/ios"
-  shared_preferences_web:
-    :path: ".symlinks/plugins/shared_preferences_web/ios"
 
 SPEC CHECKSUMS:
-  audioplayers: 84f968cea3f2deab00ec4f8ff53358b3c0b3992c
-  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
-  fluwx: e46c9ea0278bc6b4a2686dd29ec4ff4eb509e626
-  path_provider: fb74bd0465e96b594bb3b5088ee4a4e7bb1f2a9d
-  shared_preferences: 430726339841afefe5142b9c1f50cb6bd7793e01
-  shared_preferences_macos: f3f29b71ccbb56bf40c9dd6396c9acf15e214087
-  shared_preferences_web: 141cce0c3ed1a1c5bf2a0e44f52d31eeb66e5ea9
+  audioplayers: 455322b54050b30ea4b1af7cd9e9d105f74efa8c
+  Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
+  fluwx: c192ef1ea3617badb813fa1a761ffc5c9c12208a
+  path_provider: d1e9807085df1f9cc9318206cd649dc0b76be3de
+  shared_preferences: 5033afbb22d372e15aff8ff766df9021b845f273
+  WechatOpenSDK_Fuck: aa8f4b0af902837e887a1d40c62f06c060c1dc98
 
-PODFILE CHECKSUM: 1b66dae606f75376c5f2135a8290850eeb09ae83
+PODFILE CHECKSUM: a75497545d4391e2d394c3668e20cfb1c2bbd4aa
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.10.1

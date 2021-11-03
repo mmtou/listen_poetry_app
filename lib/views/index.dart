@@ -13,7 +13,7 @@ class Index extends StatefulWidget {
 }
 
 class _Index extends State<Index> with SingleTickerProviderStateMixin {
-  List tabs;
+  List ? tabs;
 
   @override
   Widget build(BuildContext context) {
@@ -24,14 +24,14 @@ class _Index extends State<Index> with SingleTickerProviderStateMixin {
     ];
 
     return DefaultTabController(
-      length: tabs.length,
+      length: tabs!.length,
       initialIndex: 1,
       child: Scaffold(
         appBar: AppBar(
           elevation: 0,
           title: TabBar(
             indicatorSize: TabBarIndicatorSize.label,
-            tabs: tabs.map((tab) {
+            tabs: tabs!.map((tab) {
               return Tab(text: tab['name']);
             }).toList(),
           ),
@@ -41,7 +41,7 @@ class _Index extends State<Index> with SingleTickerProviderStateMixin {
           ],
         ),
         body: TabBarView(
-          children: tabs.map((tab) {
+          children: tabs!.map((tab) {
             Widget widget = tab['contentWidget'];
             return widget;
           }).toList(),

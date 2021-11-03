@@ -12,7 +12,7 @@ class Poet extends StatefulWidget {
 }
 
 class _PoetState extends State<Poet> with AutomaticKeepAliveClientMixin {
-  List list;
+  List ? list;
   int pageNum = 1;
 
   @override
@@ -29,12 +29,12 @@ class _PoetState extends State<Poet> with AutomaticKeepAliveClientMixin {
           ? Empty('暂无数据~')
           : ListView.separated(
               padding: EdgeInsets.all(16),
-              itemCount: this.list.length,
+              itemCount: this.list!.length,
               separatorBuilder: (BuildContext context, int index) => Container(
                     height: 12,
                   ),
               itemBuilder: (BuildContext context, int index) {
-                var item = this.list[index];
+                var item = this.list![index];
                 return PoetItem(item);
               }),
     );
@@ -60,7 +60,7 @@ class _PoetState extends State<Poet> with AutomaticKeepAliveClientMixin {
       List list = data['list'];
       this.list = this.list ?? [];
       setState(() {
-        this.list.addAll(list);
+        this.list!.addAll(list);
       });
     }
   }

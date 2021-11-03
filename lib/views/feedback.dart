@@ -13,9 +13,9 @@ class FeedbackPage extends StatefulWidget {
 }
 
 class _FeedbackState extends State<FeedbackPage> {
-  List levels;
+  List ? levels;
   final TextEditingController textController = new TextEditingController();
-  int star;
+  int ? star;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class _FeedbackState extends State<FeedbackPage> {
           children: <Widget>[
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: levels
+              children: levels!
                   .map((item) => IconButton(
                         iconSize: 60,
                         color: item['color'],
@@ -89,7 +89,7 @@ class _FeedbackState extends State<FeedbackPage> {
     this.initLevel();
     setState(() {
       this.star = index + 1;
-      this.levels[index]['color'] = Theme.of(context).primaryColor;
+      this.levels![index]['color'] = Theme.of(context).primaryColor;
     });
   }
 

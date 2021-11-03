@@ -20,8 +20,8 @@ class PoetDetail extends StatefulWidget {
 
 class _PoetDetailState extends State<PoetDetail> {
   var detail;
-  List list;
-  int pageNum;
+  List ? list;
+  int ? pageNum;
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +47,7 @@ class _PoetDetailState extends State<PoetDetail> {
   }
 
   Widget buildBody() {
-    list[0] = (this.detail == null
+    list![0] = (this.detail == null
         ? Center(
             child: CircularProgressIndicator(),
           )
@@ -129,13 +129,13 @@ class _PoetDetailState extends State<PoetDetail> {
       onRefresh: () => refresh(),
       onLoad: () => onLoad(),
       child: ListView.separated(
-        itemCount: list.length,
+        itemCount: list!.length,
         padding: EdgeInsets.all(16),
         separatorBuilder: (BuildContext context, int index) => Container(
           height: 12,
         ),
         itemBuilder: (context, index) {
-          var item = list[index];
+          var item = list![index];
           if (index == 0) {
             return item;
           }
@@ -167,7 +167,7 @@ class _PoetDetailState extends State<PoetDetail> {
         await Http().get('/poetry/list?authorId=${widget.id}&pageNum=$pageNum');
     if (data != null) {
       List list = data['list'];
-      this.list.addAll(list);
+      this.list!.addAll(list);
       setState(() {
         this.list = this.list;
       });
@@ -180,7 +180,7 @@ class _PoetDetailState extends State<PoetDetail> {
   }
 
   onLoad() async {
-    this.pageNum += 1;
+    this.pageNum = this.pageNum! + 1;
     await this.getPoetry();
     return true;
   }

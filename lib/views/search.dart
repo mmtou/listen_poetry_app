@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/bezier_bounce_footer.dart';
 import 'package:flutter_easyrefresh/bezier_circle_header.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
-import 'package:flutter_tags/tag.dart';
+import 'package:flutter_tags/flutter_tags.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../components/empty.dart';
@@ -102,7 +102,7 @@ class _SearchState extends State<Search> {
                 activeColor: Colors.white,
                 textActiveColor: Colors.black.withOpacity(0.8),
                 padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                onPressed: (Item i) => onTapItem(i.title),
+                onPressed: (Item i) => onTapItem(i.title!),
               );
             },
           ),
@@ -125,7 +125,7 @@ class _SearchState extends State<Search> {
                 title: hotSearch[index]['keyword'],
                 activeColor: Theme.of(context).primaryColor,
                 padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                onPressed: (Item i) => onTapItem(i.title),
+                onPressed: (Item i) => onTapItem(i.title!),
               );
             },
           ),

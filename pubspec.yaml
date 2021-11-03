@@ -14,7 +14,7 @@ description: 听诗吧app
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.14.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -23,13 +23,13 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
-  dio: 3.0.8
-  bot_toast: ^2.2.1
-  flutter_tags: "^0.4.5"
-  shared_preferences: ^0.5.6+2
-  flutter_easyrefresh: ^2.0.9
-  audioplayers: ^0.14.0
-  fluwx: ^1.2.1+2
+  dio: ^4.0.1
+  bot_toast: ^4.0.1
+  flutter_tags: ^1.0.0-nullsafety.1
+  shared_preferences: ^2.0.8
+  flutter_easyrefresh: ^2.2.1
+  audioplayers: ^0.20.1
+  fluwx: ^3.6.1+4
 
 dev_dependencies:
   flutter_test:

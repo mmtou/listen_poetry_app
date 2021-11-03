@@ -38,7 +38,6 @@ class Common {
 
   // 作者名字简称
   static getShortName(String authorName) {
-    authorName = authorName ?? '';
     int nameLength = authorName.length;
     if (nameLength <= 1) {
       return authorName;
@@ -92,30 +91,30 @@ class Common {
     fluwx.registerWxApi(
         appId: "wx564c6903ab358b6a",
         universalLink: "https://your.univeral.link.com/placeholder/");
-    fluwx.shareToWeChat(WeChatShareTextModel(
-        text: content,
-        transaction: "transaction}",
-        scene: WeChatScene.SESSION));
+    // fluwx.shareToWeChat(WeChatShareTextModel(
+    //     text: content,
+    //     transaction: "transaction}",
+    //     scene: WeChatScene.SESSION));
   }
 
   static shareWechatFavorite(content) {
     fluwx.registerWxApi(
         appId: "wx564c6903ab358b6a",
         universalLink: "https://your.univeral.link.com/placeholder/");
-    fluwx.shareToWeChat(WeChatShareTextModel(
-        text: content,
-        transaction: "transaction}",
-        scene: WeChatScene.FAVORITE));
+    // fluwx.shareToWeChat(WeChatShareTextModel(
+    //     text: content,
+    //     transaction: "transaction}",
+    //     scene: WeChatScene.FAVORITE));
   }
 
   static shareWechatTimeline(content) {
     fluwx.registerWxApi(
         appId: "wx564c6903ab358b6a",
         universalLink: "https://your.univeral.link.com/placeholder/");
-    fluwx.shareToWeChat(WeChatShareTextModel(
-        text: content,
-        transaction: "transaction}",
-        scene: WeChatScene.TIMELINE));
+    // fluwx.shareToWeChat(WeChatShareTextModel(
+    //     text: content,
+    //     transaction: "transaction}",
+    //     scene: WeChatScene.TIMELINE));
   }
 
   // 详情页更多
